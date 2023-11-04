@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
             binding.tvNumero.text=num.toString()
+
             binding.btSumaUno.setOnClickListener(){
                 num++
             binding.tvNumero.text=num.toString()
