@@ -1,3 +1,5 @@
+
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,7 +7,7 @@ plugins {
 
 android {
     namespace = "net.iessochoa.hectormanuelgelardosabater.practica3"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "net.iessochoa.hectormanuelgelardosabater.practica3"
@@ -15,6 +17,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    viewBinding {
+        enable = true
     }
 
     buildTypes {
@@ -33,6 +38,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildToolsVersion = "34.0.0"
 }
 
 dependencies {
