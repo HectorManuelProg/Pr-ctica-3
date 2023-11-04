@@ -3,12 +3,15 @@ package net.iessochoa.hectormanuelgelardosabater.practica3
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModel
 import net.iessochoa.hectormanuelgelardosabater.practica3.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    val model:MainActivityViewModel by viewModels()
     private val TAG = "mostrar log"
-    var num:Int = 0
+    //var num:Int = 0
 
     override fun onStart() {
         super.onStart()
@@ -41,12 +44,22 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Log.i(TAG, "onCreate")
-            binding.tvNumero.text=num.toString()
+
+        //iniciamos el contador. Si es la primera vez, a cero, si es una reconstrucción,
+        // //lo hará al valor que tenía
+        binding.tvNumero.text=model.contador.toString()
+        binding.btSumaUno.setOnClickListener(){
+        //sumamos uno
+            model.sumaUno() //mostramos el valor
+            binding.tvNumero.text=model.contador.toString()
+        }
+
+           /* binding.tvNumero.text=num.toString()
 
             binding.btSumaUno.setOnClickListener(){
                 num++
             binding.tvNumero.text=num.toString()
-        }
+        }*/
 
     }
 }
