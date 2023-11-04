@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import net.iessochoa.hectormanuelgelardosabater.practica3.databinding.ActivityMainBinding
 
@@ -47,11 +48,16 @@ class MainActivity : AppCompatActivity() {
 
         //iniciamos el contador. Si es la primera vez, a cero, si es una reconstrucción,
         // //lo hará al valor que tenía
-        binding.tvNumero.text=model.contador.toString()
+       // binding.tvNumero.text=model.contador.toString()
+
+        model.getContador().observe(this, Observer<Int>{
+                cont-> binding.tvNumero.text=cont.toString()
+        })
+
         binding.btSumaUno.setOnClickListener(){
-        //sumamos uno
+        //Le indicamos al viewmodel que sume uno
             model.sumaUno() //mostramos el valor
-            binding.tvNumero.text=model.contador.toString()
+           // binding.tvNumero.text=model.contador.toString()
         }
 
            /* binding.tvNumero.text=num.toString()
