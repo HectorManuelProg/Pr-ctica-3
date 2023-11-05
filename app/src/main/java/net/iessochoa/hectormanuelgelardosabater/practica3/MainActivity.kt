@@ -7,11 +7,10 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import net.iessochoa.hectormanuelgelardosabater.practica3.databinding.ActivityMainBinding
-
+private const val TAG = "mostrar log"
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     val model:MainActivityViewModel by viewModels()
-    private val TAG = "mostrar log"
 
     override fun onStart() {
         super.onStart()
