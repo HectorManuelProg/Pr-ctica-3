@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     val model:MainActivityViewModel by viewModels()
     private val TAG = "mostrar log"
-    //var num:Int = 0
 
     override fun onStart() {
         super.onStart()
@@ -41,32 +40,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Log.i(TAG, "onCreate")
 
-        //iniciamos el contador. Si es la primera vez, a cero, si es una reconstrucción,
-        // //lo hará al valor que tenía
-       // binding.tvNumero.text=model.contador.toString()
-
         model.getContador().observe(this, Observer<Int>{
                 cont-> binding.tvNumero.text=cont.toString()
+        })
+        model.getAsteriscos().observe(this, Observer<String> {
+                asteriscos -> binding.tvAsterisco.text = asteriscos
         })
 
         binding.btSumaUno.setOnClickListener(){
         //Le indicamos al viewmodel que sume uno
+            model.agregarAsterisco()
             model.sumaUno() //mostramos el valor
-           // binding.tvNumero.text=model.contador.toString()
         }
-
-           /* binding.tvNumero.text=num.toString()
-
-            binding.btSumaUno.setOnClickListener(){
-                num++
-            binding.tvNumero.text=num.toString()
-        }*/
-
     }
 }
 
